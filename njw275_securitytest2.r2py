@@ -1,0 +1,23 @@
+#Dealing with LARGE amounts of text
+myfile=openfile("sectest4.txt", True)
+file2=openfile("sectest5.txt", True)
+
+# Attempt to read a mix of upper case and lower case
+#def readat(self,bytes,offset):
+#def writeat(self,data,offset):
+#def close(self):
+try:
+  var = file2.readat(None,0)
+  myfile.writeat(var,0)
+
+except ValueError:
+  #If security layer successful, this should fail
+  pass
+
+else:
+  #If security layer fails
+  log("Secure data compromised!") 
+ 
+#finally:
+  # Close the file after our attempt.
+  myfile.close()

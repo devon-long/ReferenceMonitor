@@ -1,0 +1,33 @@
+#This attack causes a disruption, it writes "c" on line 16 after an EOF, causing an error
+
+
+# Open a file
+myfile=openfile("sectest1.txt", True)
+file2=openfile("sectest2.txt",True)
+ 
+# Attempt to read a mix of upper case and lower case
+#def readat(self,bytes,offset):
+#def writeat(self,data,offset):
+#def close(self):
+try:
+    myfile.writeat("ab",0)
+    myfile.writeat("bCD",1) 
+    readVal = myfile.readat(2,0)
+    file2.writeat("c",3)
+
+except ValueError:
+  #If security layer successful, this should fail
+  pass
+  
+else:
+  #If security layer fails
+  log("Secure data compromised!\n")	
+ 
+finally:
+  # Close the file after our attempt.
+  myfile.close()
+  file2.close()
+
+
+
+

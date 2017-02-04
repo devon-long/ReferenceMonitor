@@ -1,0 +1,26 @@
+#Dealing with 2 files
+myfile=openfile("sectest6".txt", True)
+file2=openfile("sectest7.txt",True)
+
+# Attempt to read a mix of upper case and lower case
+#def readat(self,bytes,offset):
+#def writeat(self,data,offset):
+#def close(self):
+try:
+    myfile.writeat("ab",0)
+    myfile.writeat("bCD",1)
+    file2.writeat("gg",0)
+    file2.writeat("C",1)
+    file2.readat(2,0)
+
+except ValueError:
+  #If security layer successful, this should fail
+  pass
+
+else:
+  #If security layer fails
+  log("Secure data compromised!\n") 
+ 
+#finally:
+  myfile.close()
+  file2.close()
